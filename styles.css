@@ -17,6 +17,7 @@ section {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: white;
+    position: relative;
 }
 
 .cal--head {
@@ -119,4 +120,119 @@ input:focus {
 
 .fa-solid {
     cursor: pointer;
+    width: 20px;
+    text-align: right;
 }
+
+.fa-solid .settings {
+    font-weight: bold;
+    position: absolute;
+    top: 44px;
+    right: 20px;
+    color: rgb(94, 94, 94);
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 11px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease;
+    transform-origin: top right;
+    transform: scale(0);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fa-solid.show .settings {
+    transform: scale(1);
+} 
+
+.menu {
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+
+}
+
+ul {
+    list-style: none;
+}
+
+/*Some sleek background button*/
+.l {
+    display: block;
+    margin-bottom: 1.5em;
+    font-size: 1em;
+  }
+  
+  .l {
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 0.75em;
+    box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.3) inset;
+    color: #fdea7b;
+    display: inline-flex;
+    align-items: center;
+    margin: auto;
+    padding: 0.15em;
+    width: 3em;
+    height: 1.5em;
+    transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .l:before, .l:after {
+    content: "";
+    display: block;
+  }
+  
+  .l:before {
+    background-color: #d7d7d7;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+    z-index: 1;
+  }
+  
+  .l:after {
+    background: linear-gradient(transparent 50%, rgba(0,0,0,0.15) 0) 0 50% / 50% 100%,
+          repeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%,
+          radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
+    background-repeat: no-repeat;
+    border: 0.25em solid transparent;
+    border-left: 0.4em solid #d8d8d8;
+    border-right: 0 solid transparent;
+    transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+    transform: translateX(-22.5%);
+    transform-origin: 25% 50%;
+    width: 1.2em;
+    height: 1em;
+    box-sizing: border-box;
+  }
+  /* Checked */
+  .l:checked {
+    background-color: rgba(0,0,0,0.45);
+    box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.1) inset;
+  }
+  
+  .l:checked:before {
+    background-color: currentColor;
+    transform: translateX(125%)
+  }
+  
+  .l:checked:after {
+    border-left-color: currentColor;
+    transform: translateX(-2.5%) rotateY(180deg);
+  }
+  /* Other States */
+  .l:focus {
+      /* Usually an anti-A11Y practice but set to remove an annoyance just for this demo */
+    outline: 0;
+  }

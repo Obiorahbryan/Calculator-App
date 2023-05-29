@@ -12,6 +12,15 @@ const
     equalBtn = document.querySelector('.equal'),
     special = document.querySelectorAll('.special');
 
+function showSet(elem) {
+    elem.classList.add('show');
+    document.addEventListener('click', e => {
+        if (e.target.tagName != 'I' || e.target != elem) {
+            elem.classList.remove('show');
+        }
+    })
+}
+
 //number buttons
 numbers.forEach(number => {
     number.addEventListener('click', () => {
