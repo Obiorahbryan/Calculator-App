@@ -1,6 +1,6 @@
 const 
     numbers = document.querySelectorAll('.number'),
-    input = document.querySelector('input'),
+    input = document.querySelector('.input'),
     clear = document.querySelector('.clear'),
     deleteBtn = document.querySelector('.deleteBtn'),
     percentBtn = document.querySelector('.percentBtn'),
@@ -10,7 +10,21 @@ const
     minusBtn = document.querySelector('.minusBtn'),
     plusBtn = document.querySelector('.plusBtn'),
     equalBtn = document.querySelector('.equal'),
+    checkbox = document.getElementById('checkbox'),
     special = document.querySelectorAll('.special');
+
+checkbox.addEventListener('click', () => {
+    document.querySelector('section').classList.toggle('dark');
+    document.querySelector('h1').classList.toggle('dark');
+    document.querySelector('.fa-solid').classList.toggle('dark');
+    document.querySelector('.input').classList.toggle('dark');
+    document.querySelector('.result').classList.toggle('dark');
+    document.querySelector('.enter--keys').classList.toggle('dark');
+    document.querySelectorAll('.keyrow--1').forEach(item => {
+        item.classList.toggle('dark');
+    });
+
+})
 
 function showSet(elem) {
     elem.classList.add('show');
