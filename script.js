@@ -6,6 +6,9 @@ const
     percentBtn = document.querySelector('.percentBtn'),
     resultField = document.querySelector('.result'),
     divideBtn = document.querySelector('.divideBtn'),
+    multiplyBtn = document.querySelector('.multiplyBtn'),
+    minusBtn = document.querySelector('.minusBtn'),
+    plusBtn = document.querySelector('.plusBtn'),
     equalBtn = document.querySelector('.equal'),
     special = document.querySelectorAll('.special');
 
@@ -13,6 +16,7 @@ const
 numbers.forEach(number => {
     number.addEventListener('click', () => {
         input.value += number.innerHTML;
+        resultField.innerHTML = "";
     })
 })
 
@@ -64,9 +68,7 @@ percentBtn.addEventListener('click', () => {
 
 //divide button
 divideBtn.addEventListener('click', () => {
-    if ((resultField.innerHTML)) {
-
-    } else if (!(input.value.trim())) {
+    if (!(input.value.trim())) {
         return;
     } else {
         const num = parseFloat(input.value, 10);
@@ -75,6 +77,42 @@ divideBtn.addEventListener('click', () => {
         input.value += ' ÷ ';
     }
 
+})
+
+//multiplication button
+multiplyBtn.addEventListener('click', () => {
+    if (!(input.value.trim())) {
+        return;
+    } else {
+        const num = parseFloat(input.value, 10);
+        const result = num * 1;
+        resultField.innerHTML = result;
+        input.value += ' × ';
+    }
+})
+
+//minus button
+minusBtn.addEventListener('click', () => {
+    if (!(input.value.trim())) {
+        return;
+    } else {
+        const num = parseFloat(input.value, 10);
+        const result = num - 0;
+        resultField.innerHTML = result;
+        input.value += ' - ';
+    }
+})
+
+//add button
+plusBtn.addEventListener('click', () => {
+    if (!(input.value.trim())) {
+        return;
+    } else {
+        const num = parseFloat(input.value, 10);
+        const result = num + 0;
+        resultField.innerHTML = result;
+        input.value += ' + ';
+    }
 })
 
 input.addEventListener('input', (e) => {
@@ -101,14 +139,56 @@ equalBtn.addEventListener('click', () => {
         const num = str.split(' ');
         const num1 = Number(num[0]);
         const num2 = Number(num[2]);
-        console.log(num1, num2);
+
         if(num[1] == '÷') {
             const result = num1 / num2;
             if (Number.isInteger(result)) {
                 resultField.innerHTML = parseInt(result);
                 input.value = "";
             } else {
-                let roundedResult = result.toFixed(8);
+                let roundedResult = result.toFixed(13);
+                let trimmedNum = parseFloat(roundedResult).toString();
+                resultField.innerHTML = trimmedNum;
+                input.value = "";
+            }
+
+        }
+
+        if(num[1] == '×') {
+            const result = num1 * num2;
+            if (Number.isInteger(result)) {
+                resultField.innerHTML = parseInt(result);
+                input.value = "";
+            } else {
+                let roundedResult = result.toFixed(13);
+                let trimmedNum = parseFloat(roundedResult).toString();
+                resultField.innerHTML = trimmedNum;
+                input.value = "";
+            }
+            
+        }
+
+        if(num[1] == '-') {
+            const result = num1 - num2;
+            if (Number.isInteger(result)) {
+                resultField.innerHTML = parseInt(result);
+                input.value = "";
+            } else {
+                let roundedResult = result.toFixed(13);
+                let trimmedNum = parseFloat(roundedResult).toString();
+                resultField.innerHTML = trimmedNum;
+                input.value = "";
+            }
+            
+        }
+
+        if(num[1] == '+') {
+            const result = num1 + num2;
+            if (Number.isInteger(result)) {
+                resultField.innerHTML = parseInt(result);
+                input.value = "";
+            } else {
+                let roundedResult = result.toFixed(13);
                 let trimmedNum = parseFloat(roundedResult).toString();
                 resultField.innerHTML = trimmedNum;
                 input.value = "";
