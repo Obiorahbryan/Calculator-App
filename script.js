@@ -1,5 +1,6 @@
 const 
     numbers = document.querySelectorAll('.number'),
+    call = document.querySelectorAll('.cal'),
     input = document.querySelector('.input'),
     clear = document.querySelector('.clear'),
     deleteBtn = document.querySelector('.deleteBtn'),
@@ -35,13 +36,13 @@ function showSet(elem) {
     })
 }
 
-//number buttons
-numbers.forEach(number => {
-    number.addEventListener('click', () => {
-        input.value += number.innerHTML;
-        resultField.innerHTML = "";
+//call all character to input field
+call.forEach(item => {
+    item.addEventListener('click', () => {
+        input.value += ' ' + item.innerHTML + ' ';
     })
 })
+
 
 //clear field button
 clear.addEventListener('click', () => {
@@ -89,54 +90,6 @@ percentBtn.addEventListener('click', () => {
     }
 })
 
-//divide button
-divideBtn.addEventListener('click', () => {
-    if (!(input.value.trim())) {
-        return;
-    } else {
-        const num = parseFloat(input.value, 10);
-        const result = num / 1;
-        resultField.innerHTML = result;
-        input.value += ' ÷ ';
-    }
-
-})
-
-//multiplication button
-multiplyBtn.addEventListener('click', () => {
-    if (!(input.value.trim())) {
-        return;
-    } else {
-        const num = parseFloat(input.value, 10);
-        const result = num * 1;
-        resultField.innerHTML = result;
-        input.value += ' × ';
-    }
-})
-
-//minus button
-minusBtn.addEventListener('click', () => {
-    if (!(input.value.trim())) {
-        return;
-    } else {
-        const num = parseFloat(input.value, 10);
-        const result = num - 0;
-        resultField.innerHTML = result;
-        input.value += ' - ';
-    }
-})
-
-//add button
-plusBtn.addEventListener('click', () => {
-    if (!(input.value.trim())) {
-        return;
-    } else {
-        const num = parseFloat(input.value, 10);
-        const result = num + 0;
-        resultField.innerHTML = result;
-        input.value += ' + ';
-    }
-})
 
 input.addEventListener('input', (e) => {
     const inputValue = e.target.value;
@@ -154,69 +107,26 @@ window.addEventListener('load', () => {
 })
 
 //equal button fix
-equalBtn.addEventListener('click', () => {
+function evaluateExpression(expression) {
+    try {
+        const modifiedExpression = expression.replace(/×/g, "*").replace(/÷/g, "/");
+        const result = eval(modifiedExpression);
+        return result;
+    } catch (error) {
+        console.error("Error evaluating expression:", error);
+        return null;
+    }
+}
+
+equalBtn.addEventListener("click", () => {
+    // If empty, do nothing
     if (!input.value) {
         return;
     } else {
-        const str = input.value;
-        const num = str.split(' ');
-        const num1 = Number(num[0]);
-        const num2 = Number(num[2]);
-
-        if(num[1] == '÷') {
-            const result = num1 / num2;
-            if (Number.isInteger(result)) {
-                resultField.innerHTML = parseInt(result);
-                input.value = "";
-            } else {
-                let roundedResult = result.toFixed(13);
-                let trimmedNum = parseFloat(roundedResult).toString();
-                resultField.innerHTML = trimmedNum;
-                input.value = "";
-            }
-
+        const result = evaluateExpression(input.value);
+        if (result !== null) {
+        resultField.innerHTML = result;
         }
-
-        if(num[1] == '×') {
-            const result = num1 * num2;
-            if (Number.isInteger(result)) {
-                resultField.innerHTML = parseInt(result);
-                input.value = "";
-            } else {
-                let roundedResult = result.toFixed(13);
-                let trimmedNum = parseFloat(roundedResult).toString();
-                resultField.innerHTML = trimmedNum;
-                input.value = "";
-            }
-            
-        }
-
-        if(num[1] == '-') {
-            const result = num1 - num2;
-            if (Number.isInteger(result)) {
-                resultField.innerHTML = parseInt(result);
-                input.value = "";
-            } else {
-                let roundedResult = result.toFixed(13);
-                let trimmedNum = parseFloat(roundedResult).toString();
-                resultField.innerHTML = trimmedNum;
-                input.value = "";
-            }
-            
-        }
-
-        if(num[1] == '+') {
-            const result = num1 + num2;
-            if (Number.isInteger(result)) {
-                resultField.innerHTML = parseInt(result);
-                input.value = "";
-            } else {
-                let roundedResult = result.toFixed(13);
-                let trimmedNum = parseFloat(roundedResult).toString();
-                resultField.innerHTML = trimmedNum;
-                input.value = "";
-            }
-            
-        }
+        input.value = "";
     }
-})
+});
