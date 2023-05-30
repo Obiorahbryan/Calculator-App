@@ -1,3 +1,3 @@
 # Calculator-App
  Simple calculator App using HTML, CSS, & JS.
- [Link](https://calculatorpro01.netlify.app/)
+ Here's a link to try the App yourself [Link](https://calculatorpro01.netlify.app/)
