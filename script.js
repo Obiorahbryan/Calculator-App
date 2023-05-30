@@ -39,7 +39,7 @@ function showSet(elem) {
 //call all character to input field
 call.forEach(item => {
     item.addEventListener('click', () => {
-        input.value += ' ' + item.innerHTML + ' ';
+        input.value += item.innerHTML;
     })
 })
 
