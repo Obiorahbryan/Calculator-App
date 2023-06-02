@@ -96,6 +96,7 @@ input:focus {
     flex-wrap: wrap;
     align-items: center;
     transition: all 0.25s ease;
+    user-select: none;
 }
 
 .enter--keys.dark {
