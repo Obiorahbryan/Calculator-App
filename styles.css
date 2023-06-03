@@ -249,8 +249,8 @@ ul {
   
   .l:after {
     background: linear-gradient(transparent 50%, rgba(0,0,0,0.15) 0) 0 50% / 50% 100%,
-          repeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%,
-          radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
+        repeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%,
+        radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
     background-repeat: no-repeat;
     border: 0.25em solid transparent;
     border-left: 0.4em solid #d8d8d8;
